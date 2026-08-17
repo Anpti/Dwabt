@@ -1,241 +1,129 @@
-/* =====================================================================
-   Roblox login page clone — rebuilt from live DOM + css.rbxcdn.com
-   bundles (0833fd98…-ReactLogin.css, Jan 2026 deploy) and the
-   Roblox-authored .login-container ruleset (verbatim below).
-   ===================================================================== */
-
-/* ---- Design tokens (mirror Roblox's design-system CSS variables) ---- */
 :root {
-    --color-content-primary: #141414;
-    --color-content-secondary: #606060;
-    --color-content-muted: #7a7a7a;
-    --color-surface-primary: #ffffff;
-    --color-surface-secondary: #f7f7f8;
-    --color-border-primary: #d9d9d9;
-    --color-action-primary-background: #00a2ff;
-    --color-action-primary-background-hover: #0091e6;
-    --color-action-primary-background-active: #0085d6;
-    --color-action-secondary-border: #00a2ff;
-    --color-action-secondary-text: #00a2ff;
-    --color-error: #d92626;
-    --color-selection-start: #00a2ff;
-    --color-state-hover: rgba(0, 0, 0, 0.04);
-    --color-state-press: rgba(0, 0, 0, 0.08);
-    --color-focus-ring: rgba(0, 162, 255, 0.28);
-    --radius-100: 4px;
-    --radius-200: 8px;
-    --radius-300: 12px;
-    --stroke-thicker: 3px;
-    --breakpoint-medium: 601px;
-    --breakpoint-large: 1141px;
-    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
-    --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --typography-body: 16px/1.5 "Builder Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --background-color: #191b28;
+    --card-background: #ffffff;
+    --text-color: #393b3d;
+    --input-background: #f2f4f5;
+    --input-border: #a0a0a0;
+    --input-focus-border: #0074bd;
+    --button-background: #000000;
+    --button-hover: #333333;
+    --link-color: #0074bd;
+    --font-main: 'Roboto', sans-serif;
+    --font-logo: 'Chakra Petch', sans-serif;
 }
 
-/* ---- Reset ---- */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; }
 body {
-    font: var(--typography-body);
-    color: var(--color-content-primary);
-    background: var(--color-surface-secondary);
-    min-height: 100vh;
+    background-color: var(--background-color);
+    font-family: var(--font-main);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: var(--text-color);
 }
-a { color: var(--color-action-secondary-text); text-decoration: none; }
-a:hover { text-decoration: underline; }
-button { font: inherit; }
-input { font: inherit; }
-
-.skip-link {
-    position: absolute; left: -9999px; top: 0; z-index: 1000;
-    background: #fff; padding: 8px 16px; border: 1px solid var(--color-border-primary);
-}
-.skip-link:focus { left: 0; }
-
-/* =====================================================================
-   Roblox-authored ruleset — .login-container (verbatim from the
-   Login / ReactLogin CSS bundle served at css.rbxcdn.com)
-   ===================================================================== */
-.login-container { margin: 0 auto; max-width: 400px; }
-.login-container .login-header { margin-bottom: 18px; text-align: center; }
-.login-container .username-form-group { margin-bottom: 18px; }
-.login-container .password-form-group { margin-bottom: 0; }
-.login-container .login-button { margin: 6px 0 12px; }
-.login-container .forgot-credentials-link { font-size: 16px; font-weight: 300; margin-top: 12px; }
-.login-container .signup-option { margin: 24px 0; }
-.login-container .account-not-needed-text,
-.login-container .no-account-text { font-weight: 400; }
-.login-container .signup-link { margin-left: 6px; }
-.login-container .play-as-guest,
-.login-container .play-as-guest-divider { margin: 12px 0; }
-.login-container .play-as-guest-button { margin-left: 12px; vertical-align: baseline; }
-@media (max-width: 767px) {
-    .login-container .play-as-guest-button { margin-top: 6px; }
-}
-.login-container .fb-divider-container { position: relative; margin-bottom: 6px; }
-.login-container .fb-divider-container .fb-divider { margin: 24px 0 0; }
-.login-container .fb-divider-container .divider-text-container { position: relative; top: -13px; text-align: center; }
-@media (max-width: 767px) {
-    .login-container .fb-divider-container .divider-text-container { top: -11px; }
-}
-.login-container .fb-divider-container .divider-text-container .divider-text { background: #fff; padding: 12px; }
-.login-container .cross-device-login-button { margin-bottom: 10px; }
-
-/* =====================================================================
-   Header
-   ===================================================================== */
-.container-header {
-    background: var(--color-surface-primary);
-    box-shadow: var(--shadow-header);
-    position: sticky; top: 0; z-index: 100;
-}
-.navigation {
-    max-width: 1200px; margin: 0 auto; height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px;
-}
-.navigation-left { display: flex; align-items: center; gap: 28px; }
-.navbar-brand { display: flex; align-items: center; color: var(--color-content-primary); }
-.navbar-brand:hover { text-decoration: none; }
-.roblox-logo { display: flex; align-items: center; gap: 4px; }
-.logo-text {
-    font-size: 28px; font-weight: 800; font-style: italic;
-    letter-spacing: -0.5px; color: var(--color-content-primary);
-}
-.nav-links { display: flex; list-style: none; gap: 24px; }
-.nav-links a {
-    color: var(--color-content-secondary); font-size: 16px; font-weight: 600;
-    transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--color-content-primary); text-decoration: none; }
-.navigation-right { display: flex; align-items: center; gap: 12px; }
-.navbar-toggler {
-    display: none; background: none; border: none; cursor: pointer;
-    flex-direction: column; gap: 5px; padding: 8px;
-}
-.navbar-toggler span { width: 22px; height: 2px; background: var(--color-content-primary); }
-.mobile-menu { display: none; flex-direction: column; background: #fff; border-top: 1px solid #eee; padding: 8px 24px 16px; }
-.mobile-menu a { padding: 10px 0; color: var(--color-content-secondary); font-weight: 600; border-bottom: 1px solid #f2f2f2; }
-.mobile-menu a:last-child { border-bottom: none; }
-
-/* ---- Buttons (design-system .btn base) ---- */
-.btn {
-    display: inline-block; margin-bottom: 0; font-weight: 600; text-align: center;
-    vertical-align: middle; cursor: pointer; background-image: none;
-    border: 1px solid transparent; white-space: nowrap;
-    padding: 9px 24px; font-size: 16px; line-height: 1.428571429;
-    border-radius: var(--radius-200);
-    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
-    transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
-}
-.btn:focus-visible { outline: var(--stroke-thicker) solid var(--color-selection-start); outline-offset: 2px; }
-.btn:active { box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
-.btn.disabled, .btn[disabled] { cursor: not-allowed; pointer-events: none; opacity: 0.65; }
-.btn-sm { padding: 7px 20px; font-size: 14px; border-radius: var(--radius-200); }
-.btn-block { display: block; width: 100%; }
-
-.btn-primary { background: var(--color-action-primary-background); border-color: var(--color-action-primary-background); color: #fff; }
-.btn-primary:hover { background: var(--color-action-primary-background-hover); border-color: var(--color-action-primary-background-hover); color: #fff; text-decoration: none; }
-.btn-primary:active { background: var(--color-action-primary-background-active); border-color: var(--color-action-primary-background-active); }
-
-.btn-secondary { background: var(--color-surface-primary); border-color: var(--color-action-secondary-border); color: var(--color-action-secondary-text); }
-.btn-secondary:hover { background: var(--color-state-hover); color: var(--color-action-secondary-text); text-decoration: none; }
-
-.btn-ghost {
-    background: var(--color-surface-primary); border-color: var(--color-border-primary);
-    color: var(--color-content-primary); display: flex; align-items: center;
-    justify-content: center; gap: 10px; font-weight: 500;
-}
-.btn-ghost:hover { background: var(--color-state-hover); color: var(--color-content-primary); text-decoration: none; }
-.btn-ghost .chevron { margin-left: auto; color: var(--color-content-muted); }
-
-/* =====================================================================
-   Main / login card
-   ===================================================================== */
-.container-main { flex: 1; display: flex; align-items: flex-start; justify-content: center; padding: 64px 16px 48px; }
 
 .login-container {
-    background: var(--color-surface-primary);
-    border: 1px solid #e5e5e5;
-    border-radius: var(--radius-300);
-    box-shadow: var(--shadow-card);
-    padding: 32px 32px 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: var(--card-background);
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+.rbx-logo {
+    width: 45px;
+    height: 45px;
+}
+
+.rbx-text {
+    font-family: var(--font-logo);
+    font-weight: 700;
+    font-size: 32px;
+    color: #000;
+    letter-spacing: -1px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-group {
     width: 100%;
 }
-.login-header h1 { font-size: 30px; font-weight: 700; color: var(--color-content-primary); letter-spacing: -0.3px; }
 
-.form-group { margin-bottom: 18px; text-align: left; }
-.form-group label { display: block; font-size: 14px; color: var(--color-content-secondary); margin-bottom: 6px; font-weight: 400; }
-.form-group input {
-    width: 100%; height: 44px; padding: 0 14px;
-    border: 1px solid var(--color-border-primary); border-radius: var(--radius-200);
-    font-size: 16px; color: var(--color-content-primary); background: #fff;
-    transition: border-color 0.15s, box-shadow 0.15s;
+input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
-.form-group input:focus {
+
+input::placeholder {
+    color: #838383;
+}
+
+input:focus {
     outline: none;
-    border-color: var(--color-selection-start);
-    box-shadow: 0 0 0 var(--stroke-thicker) var(--color-focus-ring);
-}
-.form-group input.input-error { border-color: var(--color-error); }
-.form-group input.input-error:focus { box-shadow: 0 0 0 var(--stroke-thicker) rgba(217, 38, 38, 0.2); }
-
-.field-error { color: var(--color-error); font-size: 13px; margin-top: 5px; min-height: 0; }
-.field-error:empty { display: none; }
-
-.form-error {
-    background: #fff3f3; border: 1px solid #f5c6c6; color: var(--color-error);
-    border-radius: var(--radius-200); padding: 10px 14px; font-size: 14px; margin: 4px 0 14px; text-align: center;
+    background-color: #fff;
+    border-color: var(--input-focus-border);
 }
 
-.forgot-credentials-link { text-align: center; }
-.forgot-credentials-link a { font-size: 15px; color: var(--color-action-secondary-text); }
-
-/* Quick sign-in divider + buttons */
-.quick-signin-divider { display: flex; align-items: center; margin: 22px 0 16px; }
-.quick-signin-divider span { flex: 1; height: 1px; background: #e8e8e8; }
-
-.signin-secondary { margin-bottom: 12px; }
-.signin-secondary-caption { text-align: center; font-size: 13px; color: var(--color-content-muted); margin-top: 6px; }
-
-.signup-option { text-align: center; font-size: 15px; color: var(--color-content-secondary); border-top: 1px solid #f0f0f0; padding: 16px 0 20px; margin: 16px 0 0; }
-.signup-link { color: var(--color-action-secondary-text); font-weight: 600; margin-left: 6px; }
-
-/* =====================================================================
-   Footer
-   ===================================================================== */
-.container-footer {
-    background: var(--color-surface-primary);
-    border-top: 1px solid #eee;
-    padding: 28px 24px 40px;
-    text-align: center;
+.login-btn {
+    background-color: var(--button-background);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s ease;
 }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 10px; max-width: 1000px; margin: 0 auto; }
-.footer-links a { color: var(--color-content-muted); font-size: 13px; }
-.footer-links a:hover { color: var(--color-content-primary); }
-.footer-links .dot { color: #d0d0d0; font-size: 12px; }
-.privacy-icon { vertical-align: -1px; margin-right: 3px; color: var(--color-content-muted); }
-.footer-copyright { color: var(--color-content-muted); font-size: 12px; margin-top: 18px; }
 
-/* =====================================================================
-   Responsive (Roblox breakpoints: 767px / 543px)
-   ===================================================================== */
-@media (max-width: 767px) {
-    .nav-links { display: none; }
-    .navbar-toggler { display: flex; }
-    .mobile-menu.open { display: flex; }
-    .navigation-right .btn-secondary, .navigation-right .btn-primary { display: none; }
-    .container-main { padding: 28px 12px 24px; }
-    .login-container { padding: 24px 20px 8px; border-radius: var(--radius-200); }
-    .login-header h1 { font-size: 26px; }
+.login-btn:hover {
+    background-color: var(--button-hover);
 }
-@media (max-width: 543px) {
-    .login-container { max-width: 100%; }
-    .navigation { padding: 0 16px; }
+
+.footer-links {
+    margin-top: 16px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
-@media (min-width: 1141px) {
-    .container-main { padding-top: 80px; }
-        }
+
+.footer-links a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
