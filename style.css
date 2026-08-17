@@ -1,129 +1,115 @@
+/* STABLE CSS - ROBLOX CLONE STYLE */
 :root {
-    --background-color: #191b28;
-    --card-background: #ffffff;
-    --text-color: #393b3d;
-    --input-background: #f2f4f5;
+    --bg-color: #232527; /* Dark mode background */
+    --card-bg: #ffffff;
+    --input-bg: #f2f4f5;
     --input-border: #a0a0a0;
-    --input-focus-border: #0074bd;
-    --button-background: #000000;
-    --button-hover: #333333;
-    --link-color: #0074bd;
+    --input-focus: #0074bd;
+    --btn-color: #000000;
+    --btn-hover: #333333;
+    --text-color: #393b3d;
     --font-main: 'Roboto', sans-serif;
     --font-logo: 'Chakra Petch', sans-serif;
 }
 
 body {
-    background-color: var(--background-color);
-    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow: hidden;
 }
 
 .login-container {
+    background: var(--card-bg);
     width: 100%;
     max-width: 400px;
-    padding: 20px;
-}
-
-.login-card {
-    background-color: var(--card-background);
-    padding: 40px 30px;
+    padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    text-align: center;
 }
 
-.logo-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    gap: 8px;
-}
-
-.rbx-logo {
-    width: 45px;
-    height: 45px;
-}
-
-.rbx-text {
+.logo {
     font-family: var(--font-logo);
+    font-size: 40px;
     font-weight: 700;
-    font-size: 32px;
     color: #000;
-    letter-spacing: -1px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.input-group {
-    width: 100%;
+label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-weight: 500;
 }
 
 input {
     width: 100%;
     padding: 16px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    background-color: var(--input-bg);
     font-size: 16px;
-    background-color: var(--input-background);
-    color: var(--text-color);
     box-sizing: border-box;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-input::placeholder {
-    color: #838383;
+    color: var(--text-color);
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
 input:focus {
-    outline: none;
     background-color: #fff;
-    border-color: var(--input-focus-border);
+    border-color: var(--input-focus);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 116, 189, 0.2);
 }
 
-.login-btn {
-    background-color: var(--button-background);
-    color: white;
+button {
+    width: 100%;
     padding: 16px;
+    background-color: var(--btn-color);
+    color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 8px;
-    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    transition: background-color 0.2s;
 }
 
-.login-btn:hover {
-    background-color: var(--button-hover);
+button:hover {
+    background-color: var(--btn-hover);
+}
+
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
 }
 
 .footer-links {
-    margin-top: 16px;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+    margin-top: 20px;
+    font-size: 13px;
 }
 
 .footer-links a {
-    color: var(--link-color);
+    color: var(--input-focus);
     text-decoration: none;
-    font-weight: 500;
+    display: block;
+    margin-top: 5px;
 }
 
 .footer-links a:hover {
     text-decoration: underline;
-}
-
-.hidden {
-    display: none;
 }
