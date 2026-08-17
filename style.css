@@ -1,75 +1,119 @@
+:root {
+    --bg-color: #232527; /* Modern Dark Theme */
+    --card-bg: #ffffff;
+    --text-color: #ffffff;
+    --input-bg: #f2f4f5;
+    --input-border: #a0a0a0;
+    --input-focus-border: #00b06f; /* Roblox Green */
+    --btn-bg: #000000;
+    --btn-hover: #333333;
+    --link-color: #0074bd;
+    --font-main: 'Roboto', 'Chakra Petch', sans-serif;
+}
+
 body {
-    background-color: #232527; /* Fond sombre officiel Roblox */
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    font-family: var(--font-main);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: #ffffff;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
 }
 
-.login-container {
-    background-color: #ffffff;
-    padding: 40px;
+.login-wrapper {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 20px;
+}
+
+.login-card {
+    background-color: var(--card-bg);
+    padding: 40px 30px;
     border-radius: 8px;
-    width: 320px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    color: #393b3d; /* Dark text for the card */
 }
 
-.logo {
-    width: 120px;
-    margin-bottom: 20px;
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+.logo-text {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #000;
+    letter-spacing: -1px;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 input {
-    padding: 12px;
-    border: 1px solid #a0a0a0;
-    border-radius: 5px;
+    padding: 16px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
     font-size: 16px;
-    background-color: #f2f4f5;
+    background-color: var(--input-bg);
+    color: #393b3d;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+input::placeholder {
+    color: #838383;
 }
 
 input:focus {
     outline: none;
-    border-color: #00b06f; /* Le vert Roblox */
+    border-color: var(--input-focus-border);
     background-color: #fff;
 }
 
 .login-btn {
-    background-color: #000000; /* Bouton noir classique */
+    background-color: var(--btn-bg);
     color: white;
-    padding: 12px;
+    padding: 16px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
+    transition: background-color 0.2s ease;
 }
 
 .login-btn:hover {
-    background-color: #333;
+    background-color: var(--btn-hover);
 }
 
 .links {
-    margin-top: 15px;
-    font-size: 12px;
-    color: #666;
+    margin-top: 16px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
 
 .links a {
-    color: #0074bd;
+    color: var(--link-color);
     text-decoration: none;
-    display: block;
-    margin-top: 5px;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
 }
 
 .hidden {
