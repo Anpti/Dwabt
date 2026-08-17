@@ -1,17 +1,19 @@
 :root {
-    --bg-color: #191b28; /* Roblox Dark Mode Background */
-    --card-bg: #ffffff;
+    --background-color: #191b28;
+    --card-background: #ffffff;
     --text-color: #393b3d;
-    --input-bg: #e3e3e3; /* Specific Roblox gray input bg */
-    --input-border: transparent;
-    --btn-bg: #000000;
-    --btn-hover: #3a3a3a;
+    --input-background: #f2f4f5;
+    --input-border: #a0a0a0;
+    --input-focus-border: #0074bd;
+    --button-background: #000000;
+    --button-hover: #333333;
     --link-color: #0074bd;
     --font-main: 'Roboto', sans-serif;
+    --font-logo: 'Chakra Petch', sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--background-color);
     font-family: var(--font-main);
     display: flex;
     justify-content: center;
@@ -28,7 +30,7 @@ body {
 }
 
 .login-card {
-    background-color: var(--card-bg);
+    background-color: var(--card-background);
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -48,7 +50,7 @@ body {
 }
 
 .rbx-text {
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: var(--font-logo);
     font-weight: 700;
     font-size: 32px;
     color: #000;
@@ -69,10 +71,10 @@ input {
     width: 100%;
     padding: 16px;
     border: 1px solid transparent;
-    border-radius: 4px; /* Less rounded than modern UI */
+    border-radius: 4px;
     font-size: 16px;
-    background-color: var(--input-bg);
-    color: #393b3d;
+    background-color: var(--input-background);
+    color: var(--text-color);
     box-sizing: border-box;
     transition: border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -84,11 +86,11 @@ input::placeholder {
 input:focus {
     outline: none;
     background-color: #fff;
-    border-color: #0074bd; /* Blue border on focus */
+    border-color: var(--input-focus-border);
 }
 
 .login-btn {
-    background-color: var(--btn-bg);
+    background-color: var(--button-background);
     color: white;
     padding: 16px;
     border: none;
@@ -101,7 +103,7 @@ input:focus {
 }
 
 .login-btn:hover {
-    background-color: var(--btn-hover);
+    background-color: var(--button-hover);
 }
 
 .footer-links {
