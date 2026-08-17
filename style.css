@@ -1,14 +1,13 @@
 :root {
-    --bg-color: #232527; /* Modern Dark Theme */
+    --bg-color: #191b28; /* Roblox Dark Mode Background */
     --card-bg: #ffffff;
-    --text-color: #ffffff;
-    --input-bg: #f2f4f5;
-    --input-border: #a0a0a0;
-    --input-focus-border: #00b06f; /* Roblox Green */
+    --text-color: #393b3d;
+    --input-bg: #e3e3e3; /* Specific Roblox gray input bg */
+    --input-border: transparent;
     --btn-bg: #000000;
-    --btn-hover: #333333;
+    --btn-hover: #3a3a3a;
     --link-color: #0074bd;
-    --font-main: 'Roboto', 'Chakra Petch', sans-serif;
+    --font-main: 'Roboto', sans-serif;
 }
 
 body {
@@ -20,24 +19,22 @@ body {
     height: 100vh;
     margin: 0;
     color: var(--text-color);
-    -webkit-font-smoothing: antialiased;
 }
 
-.login-wrapper {
+.login-container {
     width: 100%;
     max-width: 400px;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .login-card {
     background-color: var(--card-bg);
     padding: 40px 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    color: #393b3d; /* Dark text for the card */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.logo-container {
+.logo-section {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +42,12 @@ body {
     gap: 8px;
 }
 
-.logo-text {
+.rbx-logo {
+    width: 45px;
+    height: 45px;
+}
+
+.rbx-text {
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
     font-size: 32px;
@@ -59,16 +61,20 @@ body {
     gap: 12px;
 }
 
+.input-group {
+    width: 100%;
+}
+
 input {
+    width: 100%;
     padding: 16px;
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px; /* Less rounded than modern UI */
     font-size: 16px;
     background-color: var(--input-bg);
     color: #393b3d;
-    width: 100%;
     box-sizing: border-box;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 input::placeholder {
@@ -77,8 +83,8 @@ input::placeholder {
 
 input:focus {
     outline: none;
-    border-color: var(--input-focus-border);
     background-color: #fff;
+    border-color: #0074bd; /* Blue border on focus */
 }
 
 .login-btn {
@@ -98,7 +104,7 @@ input:focus {
     background-color: var(--btn-hover);
 }
 
-.links {
+.footer-links {
     margin-top: 16px;
     font-size: 14px;
     display: flex;
@@ -106,13 +112,13 @@ input:focus {
     gap: 16px;
 }
 
-.links a {
+.footer-links a {
     color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
 }
 
-.links a:hover {
+.footer-links a:hover {
     text-decoration: underline;
 }
 
